@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka Charity - Make a Difference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #6b7280;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 50%, #ffebee 100%);
+        }
+
+        /* Updated to blue-red-yellow gradient colors */
+        :root {
+            --primary-color: #1976d2;
+            --secondary-color: #f44336;
+            --accent-color: #fbc02d;
+            --light-bg: #e3f2fd;
+            --warm-bg: #fff9c4;
+            --red-bg: #ffebee;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 50%, #fbc02d 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-right: 1rem;
+        }
+
+        nav a {
+            margin: 0 1.5rem;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.3s;
+            opacity: 0.9;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 50%, #ffebee 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(31, 118, 210, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(244, 67, 54, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 50%, #fbc02d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #424242;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(31, 118, 210, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(31, 118, 210, 0.4);
+        }
+
+        /* Impact Stats */
+        .impact {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 100%);
+        }
+
+        .impact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .impact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 50%, #fbc02d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border: 2px solid rgba(31, 118, 210, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #757575;
+            font-size: 0.95rem;
+        }
+
+        /* Causes Section */
+        .causes {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #fff9c4 0%, #ffebee 100%);
+        }
+
+        .causes-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .causes h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .cause-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cause-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .cause-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cause-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(31, 118, 210, 0.15) 0%, rgba(244, 67, 54, 0.15) 100%);
+        }
+
+        .cause-content {
+            padding: 2rem;
+        }
+
+        .cause-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cause-description {
+            color: #424242;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .progress-bar {
+            background: #f0f0f0;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #1976d2 0%, #f44336 50%, #fbc02d 100%);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .cause-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #757575;
+        }
+
+        /* Donation Section */
+        .donation {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #fff9c4 0%, #e3f2fd 100%);
+        }
+
+        .donation-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .donation h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #1976d2 0%, #fbc02d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .donation-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .amount-btn {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #424242;
+        }
+
+        .amount-btn:hover,
+        .amount-btn.active {
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .custom-amount {
+            margin-bottom: 2rem;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            color: #424242;
+        }
+
+        .custom-amount input:focus {
+            outline: none;
+            border-color: #1976d2;
+        }
+
+        .frequency-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .frequency-options label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #424242;
+        }
+
+        .frequency-options input {
+            cursor: pointer;
+        }
+
+        .donate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 50%, #fbc02d 100%);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(31, 118, 210, 0.3);
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(31, 118, 210, 0.4);
+        }
+
+        .impact-message {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #e3f2fd;
+            border-radius: 10px;
+            text-align: center;
+            color: #1976d2;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 100%);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #f44336 0%, #1976d2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #1976d2;
+        }
+
+        .testimonial-text {
+            color: #424242;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1976d2;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #757575;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1976d2 0%, #f44336 50%, #fbc02d 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.3s;
+            opacity: 0.9;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .amount-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://karnatakatourism.org/wp-content/uploads/2021/10/KD-TP.jpg" alt="Karnataka Cares Logo" class="logo-image">
+                ಕರ್ನಾಟಕ Cares
+            </div>
+            <nav>
+                <a href="#impact">Impact</a>
+                <a href="#causes">Causes</a>
+                <a href="#donate">Donate</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Make a Real Difference in Karnataka</h1>
+            <p>Your generosity transforms lives by protecting our environment and empowering education. Join us in creating lasting change.</p>
+            <button class="cta-button" onclick="document.getElementById('donate').scrollIntoView({behavior: 'smooth'})">Donate Now</button>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact" id="impact">
+        <div class="impact-container">
+            <h2>Our Global Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2.5M+</div>
+                    <div class="stat-label">Lives Impacted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">450+</div>
+                    <div class="stat-label">Projects Active</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Funds to Programs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Districts Reached</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Causes Section -->
+    <section class="causes" id="causes">
+        <div class="causes-container">
+            <h2> Our ಕರ್ನಾಟಕ Cares Causes </h2>
+            <div class="causes-grid">
+                <!-- Added actual image for Clean & Save Kaveri cause -->
+                <div class="cause-card">
+                    <div class="cause-image" style="background-image: url('https://akm-img-a-in.tosshub.com/indiatoday/images/story/202306/yamuna-sixteen_nine.jpg?VersionId=RpMPVie10pi9ZV3TQNV84XQU.vzSKjzx')"></div>
+                    <div class="cause-content">
+                        <h3 class="cause-title">Clean & Save Kaveri</h3>
+                        <p class="cause-description">Restore the sacred Kaveri River by reducing pollution, supporting conservation projects, and protecting aquatic ecosystems that sustain millions.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 72%"></div>
+                        </div>
+                        <div class="cause-stats">
+                            <span>₹13,82,005 raised</span>
+                            <span>₹21,62,005 goal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Added actual image for Education cause -->
+                <div class="cause-card">
+                    <div class="cause-image" style="background-image: url('https://live.staticflickr.com/292/31656915666_ab8d04fe54_b.jpg')"></div>
+                    <div class="cause-content">
+                        <h3 class="cause-title">Education for Govt Schools</h3>
+                        <p class="cause-description">Empower rural students in Karnataka government schools with quality resources, scholarships, and mentorship programs for a brighter future.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 58%"></div>
+                        </div>
+                        <div class="cause-stats">
+                            <span>₹29,00,000 raised</span>
+                            <span>₹50,00,000 goal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donation" id="donate">
+        <div class="donation-container">
+            <h2>Make Your Donation</h2>
+            <form class="donation-form" onsubmit="handleDonate(event)">
+                <div class="amount-buttons">
+                    <button type="button" class="amount-btn" onclick="selectAmount(500)">₹500</button>
+                    <button type="button" class="amount-btn" onclick="selectAmount(1000)">₹1,000</button>
+                    <button type="button" class="amount-btn" onclick="selectAmount(5000)">₹5,000</button>
+                    <button type="button" class="amount-btn" onclick="selectAmount(10000)">₹10,000</button>
+                </div>
+
+                <div class="custom-amount">
+                    <input type="number" id="customAmount" placeholder="Enter custom amount in ₹" min="1">
+                </div>
+
+                <div class="frequency-options">
+                    <label>
+                        <input type="radio" name="frequency" value="once" checked onchange="updateImpactMessage()">
+                        One-time
+                    </label>
+                    <label>
+                        <input type="radio" name="frequency" value="monthly" onchange="updateImpactMessage()">
+                        Monthly
+                    </label>
+                </div>
+
+                <button type="submit" class="donate-btn">Donate Now</button>
+
+                <div class="impact-message">
+                    <p id="impactText">Your donation will help provide clean water and education support!</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2>Donor Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Seeing how my donation directly helped students in our government schools was incredibly rewarding. Karnataka Cares is doing real work!"</p>
+                    <p class="testimonial-author">Rajesh Kumar</p>
+                    <p class="testimonial-role">Monthly Donor</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The Kaveri River restoration project has transformed my village. I'm proud to support such meaningful conservation efforts."</p>
+                    <p class="testimonial-author">Priya Sharma</p>
+                    <p class="testimonial-role">Ecosystem Supporter</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"What impresses me most is the transparency and accountability. I know exactly where my donation goes and the impact it creates."</p>
+                    <p class="testimonial-author">Arun Desai</p>
+                    <p class="testimonial-role">Long-term Contributor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Karnataka Cares. All rights reserved. | Registered Charity</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedAmount = null;
+
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            document.getElementById('customAmount').value = '';
+           
+            // Update button states
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+           
+            updateImpactMessage();
+        }
+
+        function updateImpactMessage() {
+            const amount = selectedAmount || parseInt(document.getElementById('customAmount').value) || 0;
+            const frequency = document.querySelector('input[name="frequency"]:checked').value;
+           
+            if (amount > 0) {
+                let impact = '';
+                if (amount >= 500) {
+                    impact = Help provide clean water to ${Math.floor(amount / 100)} families!;
+                }
+                if (amount >= 1000) {
+                    impact = Support education for ${Math.floor(amount / 200)} students!;
+                }
+                if (amount >= 5000) {
+                    impact = Impact ${Math.floor(amount / 500)} lives in our community!;
+                }
+               
+                const frequencyText = frequency === 'monthly' ? ' every month' : '';
+                document.getElementById('impactText').textContent = ₹${amount.toLocaleString('en-IN')}${frequencyText} - ${impact};
+            }
+        }
+
+        function handleDonate(event) {
+            event.preventDefault();
+           
+            const amount = selectedAmount || parseInt(document.getElementById('customAmount').value);
+           
+            if (!amount || amount < 1) {
+                alert('Please select or enter a valid donation amount');
+                return;
+            }
+           
+            const frequency = document.querySelector('input[name="frequency"]:checked').value;
+           
+            alert(Thank you for your ₹${amount.toLocaleString('en-IN')} ${frequency === 'monthly' ? 'monthly ' : ''}donation!\n\nYou will receive a confirmation email shortly.);
+        }
+
+        // Update impact message on custom amount input
+        document.getElementById('customAmount').addEventListener('input', updateImpactMessage);
+    </script>
+</body>
+</html>
